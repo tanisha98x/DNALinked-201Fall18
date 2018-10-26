@@ -84,6 +84,7 @@ public class LinkStrand implements IDnaStrand{
 			thing2=thing2.reverse();		
 			LinkStrand copy= new LinkStrand(thing2.toString());
 			Node head=copy.myFirst;
+			p1=p1.next;
 			while (p1!=null) {
 				StringBuilder thing= new StringBuilder (p1.info);
 				thing=thing.reverse();	
@@ -101,6 +102,8 @@ public class LinkStrand implements IDnaStrand{
 					next=current.next;	
 				}
 			}
+			copy.myFirst=myLast;
+			copy.myLast=p1;
 			return copy;
 			}
 			
