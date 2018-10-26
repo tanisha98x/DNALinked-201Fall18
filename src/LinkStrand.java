@@ -46,7 +46,7 @@ public class LinkStrand implements IDnaStrand{
 
 	@Override
 	public IDnaStrand getInstance(String source) {
-		return null;
+		return new LinkStrand(source);
 	}
 
 	@Override
