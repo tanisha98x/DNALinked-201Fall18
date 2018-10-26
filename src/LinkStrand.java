@@ -70,6 +70,13 @@ public class LinkStrand implements IDnaStrand{
 		Node pointer= myFirst;
 		if (this==null) {
 			return null;}
+		
+		if (myFirst.next==null) {
+			StringBuilder thang= new StringBuilder(myFirst.info);
+			thang=thang.reverse();
+			LinkStrand answer=new LinkStrand(thang.toString());
+			return answer;
+		}
 	
 		else {
 			Node p1=myFirst;
