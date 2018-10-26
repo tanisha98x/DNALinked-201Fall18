@@ -105,7 +105,7 @@ public class LinkStrand implements IDnaStrand{
 	@Override
 	public int getAppendCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return myAppends;
 	}
 
 	@Override
