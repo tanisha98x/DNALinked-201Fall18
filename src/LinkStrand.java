@@ -88,14 +88,16 @@ public class LinkStrand implements IDnaStrand{
 		}
 		
 		else {
-			Node copy= new Node (myFirst.info);
+			
 			Node p1=myFirst;
-			Node head=copy;
+			StringBuilder thing2= new StringBuilder (p1.info);
+			thing2=thing2.reverse();		
+			LinkStrand copy= new LinkStrand(thing2.toString());
+			Node head=copy.myFirst;
 			while (p1!=null) {
 				StringBuilder thing= new StringBuilder (p1.info);
 				thing=thing.reverse();	
-				copy.next=new Node (thing.toString());
-				copy=copy.next;
+				copy.append(thing.toString());
 				p1=p1.next;
 			}
 			
@@ -110,23 +112,11 @@ public class LinkStrand implements IDnaStrand{
 					next=current.next;	
 				}
 			}
-			myLast=myFirst;
-			myFirst=prev;
-			Node point=myFirst;
-			StringBuilder first = new StringBuilder(myFirst.info);
-			first=first.reverse();
-			ans.myFirst=new Node (first.toString());
-			point=point.next;
-			while (point!=null) {
-				StringBuilder item = new StringBuilder(point.info);
-				item=item.reverse();
-				ans.append(item.toString());
+			return copy;
 			}
 			
-		} ans.mySize= mySize;
-		return ans;
+		} 
 		
-	}
 
 	@Override
 	public int getAppendCount() {
