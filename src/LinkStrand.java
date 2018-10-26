@@ -83,6 +83,7 @@ public class LinkStrand implements IDnaStrand{
 			last=first.reverse();
 			ans.myFirst=new Node (last.toString());
 			ans.myFirst.next=new Node (first.toString());
+			ans.mySize=myFirst.info.length()+myLast.info.length();
 			return ans;
 		}
 		
