@@ -73,7 +73,7 @@ public class LinkStrand implements IDnaStrand{
 		
 		if (myFirst.next==null) {
 			StringBuilder thang= new StringBuilder(myFirst.info);
-			thang=thang.reverse();
+			thang.reverse();
 			LinkStrand answer=new LinkStrand(thang.toString());
 			return answer;
 		}
@@ -81,13 +81,13 @@ public class LinkStrand implements IDnaStrand{
 		else {
 			Node p1=myFirst;
 			StringBuilder thing2= new StringBuilder (p1.info);
-			thing2=thing2.reverse();		
+			thing2.reverse();		
 			LinkStrand copy= new LinkStrand(thing2.toString());
 			Node head=copy.myFirst;
 			p1=p1.next;
 			while (p1!=null) {
 				StringBuilder thing= new StringBuilder (p1.info);
-				thing=thing.reverse();	
+				thing.reverse();	
 				copy.append(thing.toString());
 				p1=p1.next;
 			}		
