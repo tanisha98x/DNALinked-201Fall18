@@ -46,7 +46,6 @@ public class LinkStrand implements IDnaStrand{
 
 	@Override
 	public IDnaStrand getInstance(String source) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -73,6 +72,7 @@ public class LinkStrand implements IDnaStrand{
 			StringBuilder first = new StringBuilder(myFirst.info);
 			first=first.reverse();
 			ans.myFirst=new Node (first.toString());
+			ans.mySize=myFirst.info.length();
 			return ans;
 		}
 		
