@@ -88,9 +88,20 @@ public class LinkStrand implements IDnaStrand{
 		}
 		
 		else {
-			Node current=myFirst;
+			Node copy= new Node (myFirst.info);
+			Node p1=myFirst;
+			Node head=copy;
+			while (p1!=null) {
+				StringBuilder thing= new StringBuilder (p1.info);
+				thing=thing.reverse();	
+				copy.next=new Node (thing.toString());
+				copy=copy.next;
+				p1=p1.next;
+			}
+			
+			Node current=head;
 			Node prev=null;
-			Node next=myFirst.next;
+			Node next=head.next;
 			while (current!=null) {
 				current.next=prev;
 				prev=current;
