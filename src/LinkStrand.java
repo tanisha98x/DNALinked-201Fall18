@@ -68,27 +68,10 @@ public class LinkStrand implements IDnaStrand{
 	public IDnaStrand reverse() {
 		LinkStrand ans= new LinkStrand();
 		Node pointer= myFirst;
-		if (myFirst==myLast) {
-			StringBuilder first = new StringBuilder(myFirst.info);
-			first=first.reverse();
-			ans.myFirst=new Node (first.toString());
-			ans.mySize=myFirst.info.length();
-			return ans;
-		}
-		
-		if (myFirst.next==myLast) {
-			StringBuilder first = new StringBuilder(myFirst.info);
-			first=first.reverse();
-			StringBuilder last = new StringBuilder(myLast.info);
-			last=first.reverse();
-			ans.myFirst=new Node (last.toString());
-			ans.myFirst.next=new Node (first.toString());
-			ans.mySize=myFirst.info.length()+myLast.info.length();
-			return ans;
-		}
-		
+		if (this==null) {
+			return null;}
+	
 		else {
-			
 			Node p1=myFirst;
 			StringBuilder thing2= new StringBuilder (p1.info);
 			thing2=thing2.reverse();		
@@ -99,8 +82,7 @@ public class LinkStrand implements IDnaStrand{
 				thing=thing.reverse();	
 				copy.append(thing.toString());
 				p1=p1.next;
-			}
-			
+			}		
 			Node current=head;
 			Node prev=null;
 			Node next=head.next;
