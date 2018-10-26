@@ -68,16 +68,14 @@ public class LinkStrand implements IDnaStrand{
 	public IDnaStrand reverse() {
 		if (myFirst.next==null) {
 			StringBuilder thang= new StringBuilder(myFirst.info);
-			thang.reverse();
+			thang=thang.reverse();
 			LinkStrand answer=new LinkStrand(thang.toString());
 			return answer;
 		}
-<<<<<<< HEAD
 		Node p1=myFirst;
 		StringBuilder thing2= new StringBuilder (p1.info);
 		thing2.reverse();		
 		LinkStrand copy= new LinkStrand(thing2.toString());
-		Node head=copy.myFirst;
 		p1=p1.next;
 		while (p1!=null) {
 			StringBuilder thing= new StringBuilder (p1.info);
@@ -85,45 +83,19 @@ public class LinkStrand implements IDnaStrand{
 			copy.append(thing.toString());
 			p1=p1.next;
 		}		
-		Node current=head;
+		Node current=copy.myFirst;
 		Node prev=null;
-		Node next=head.next;
+		Node next=copy.myFirst.next;
 		while (current!=null) {
 			current.next=prev;
 			prev=current;
 			current=next;
 			if (current!=null) {
 				next=current.next;	
-=======
-	
-		else {
-			Node p1=myFirst;
-			StringBuilder thing2= new StringBuilder (p1.info);
-			thing2.reverse();		
-			LinkStrand copy= new LinkStrand(thing2.toString());
-			Node head=copy.myFirst;
-			p1=p1.next;
-			while (p1!=null) {
-				StringBuilder thing= new StringBuilder (p1.info);
-				thing.reverse();	
-				copy.append(thing.toString());
-				p1=p1.next;
-			}		
-			Node current=head;
-			Node prev=null;
-			Node next=head.next;
-			while (current!=null) {
-				current.next=prev;
-				prev=current;
-				current=next;
-				if (current!=null) {
-					next=current.next;	
-				}
->>>>>>> 817aae14d4231be1e1218badd73270fe9c969ed1
 			}
 		}
-		copy.myFirst=copy.myLast;
-
+		copy.myLast=copy.myFirst;
+		copy.myFirst=prev;
 		return copy;
 
 
