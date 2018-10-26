@@ -36,7 +36,9 @@ public class CodonProfiler {
 		
 		}
 			for (int i=0; i<codons.length; i++) {
-				ret[i]=map.get(codons[i]);
+				if (map.containsKey(codons[i])) {
+				ret[i]=map.get(codons[i]);}
+				else {ret[i]=0;}
 			}
 		return ret;
 	}
