@@ -1,9 +1,90 @@
-Your Name here
-Your NetID here
-Your Partner's name here (or erase)
-Your Partner's NetID here (or erase)
+Tanisha Nalavadi
+t85
+Below are the results of DNA Benchmark class run three times, by implementing the following IDNAInterfaces- StringStrand, StringBuilderStrand, and LinkStrand on the ecoli.txt file:
 
-Questions here will come from the assignment
-writeup. Be sure to copy paste questions and 
-your explanations before you push to GitHub and
-do that before uploading to Gradescope
+1) STRINGSTRAND
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                splicee	         recomb	 time appends
+-----
+StringStrand:	            256	      4,800,471	0.424	1290
+StringStrand:	            512	      4,965,591	0.406	1290
+StringStrand:	          1,024	      5,295,831	0.428	1290
+StringStrand:	          2,048	      5,956,311	0.482	1290
+StringStrand:	          4,096	      7,277,271	0.594	1290
+StringStrand:	          8,192	      9,919,191	0.927	1290
+StringStrand:	         16,384	     15,203,031	1.304	1290
+StringStrand:	         32,768	     25,770,711	2.265	1290
+StringStrand:	         65,536	     46,906,071	4.691	1290
+StringStrand:	        131,072	     89,176,791	10.755	1290
+StringStrand:	        262,144	    173,718,231	21.152	1290
+StringStrand:	        524,288	    342,801,111	39.467	1290
+
+2) STRINGBUILDERSTRAND
+
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	                    splicee	         recomb	 time appends
+-----
+StringBuilderStrand:	            256	      4,800,471	0.044	1290
+StringBuilderStrand:	            512	      4,965,591	0.028	1290
+StringBuilderStrand:	          1,024	      5,295,831	0.007	1290
+StringBuilderStrand:	          2,048	      5,956,311	0.010	1290
+StringBuilderStrand:	          4,096	      7,277,271	0.007	1290
+StringBuilderStrand:	          8,192	      9,919,191	0.008	1290
+StringBuilderStrand:	         16,384	     15,203,031	0.011	1290
+StringBuilderStrand:	         32,768	     25,770,711	0.021	1290
+StringBuilderStrand:	         65,536	     46,906,071	0.045	1290
+StringBuilderStrand:	        131,072	     89,176,791	0.076	1290
+StringBuilderStrand:	        262,144	    173,718,231	0.272	1290
+StringBuilderStrand:	        524,288	    342,801,111	0.430	1290
+
+3) LINKSTRAND
+
+dna length = 4,639,221
+cutting at enzyme gaattc
+-----
+Class	            splicee	         recomb  time appends
+-----
+LinkStrand:	            256	      4,800,471	0.041	1290
+LinkStrand:	            512	      4,965,591	0.028	1290
+LinkStrand:	          1,024	      5,295,831	0.003	1290
+LinkStrand:	          2,048	      5,956,311	0.006	1290
+LinkStrand:	          4,096	      7,277,271	0.004	1290
+LinkStrand:	          8,192	      9,919,191	0.004	1290
+LinkStrand:	         16,384	     15,203,031	0.005	1290
+LinkStrand:	         32,768	     25,770,711	0.004	1290
+LinkStrand:	         65,536	     46,906,071	0.004	1290
+LinkStrand:	        131,072	     89,176,791	0.005	1290
+LinkStrand:	        262,144	    173,718,231	0.004	1290
+LinkStrand:	        524,288	    342,801,111	0.005	1290
+LinkStrand:	      1,048,576	    680,966,871	0.004	1290
+LinkStrand:	      2,097,152	  1,357,298,391	0.004	1290
+LinkStrand:	      4,194,304	  2,709,961,431	0.007	1290
+LinkStrand:	      8,388,608	  5,415,287,511	0.005	1290
+LinkStrand:	     16,777,216	 10,825,939,671	0.005	1290
+LinkStrand:	     33,554,432	 21,647,243,991	0.007	1290
+LinkStrand:	     67,108,864	 43,289,852,631	0.006	1290
+LinkStrand:	    134,217,728	 86,575,069,911	0.006	1290
+LinkStrand:	    268,435,456	173,145,504,471	0.008	1290
+LinkStrand:	    536,870,912	346,286,373,591	0.006	1290
+
+Question 1: are the benchmark timings for StringStrand consistent with the explanation below that the time to execute cutAndSplice is O(b2S)? 
+The benchmark timings are consistent with explanation that the time taken to execute cutAndSplice for StringStrand is O(b2S). This was obtained by
+taking every data point obtained and plotting a b^2S graph. The time was then plotted on another graph and the the derivative graph of the timings 
+was seen to coincide with the b^2S graph ie they had the same slope. This finding was consistent with the explanation as concatenations occur b^2 times
+and the big O is the multiple of the length of the string the number of concatenations.
+
+
+Question 2: are the benchmark timings for StringBuilderStrand consistent with the explanation below that the time to execute cutAndSplice is O(bS)? 
+The benchmark timings are consistent with explanation that the time taken to execute cutAndSplice for StringBuilderStrand is O(bS). This was obtained by
+taking every data point obtained and plotting a bS graph. The time was then plotted on another graph and the the derivative graph of the timings 
+was seen to coincide with the bS graph ie they had the same slope. This finding was consistent with the explanation as concatenations occur b times
+and the big O is the multiple of the length of the string the number of concatenations.
+
+
+Question 3: Explain why the time for LinkStrand does not change much at all over all the runs in the benchmark program. Explain why you think memory is exhausted at the specific strand size you see in your timings -- as compared to exhaustion for String and StringBuilder.
+The time for LinkStrand does not change much at all over all the runs in the benchmark program because Each time the original strand, a single string, is cut/spliced a new node is created. The nodes pointing to the splicee can point to the same splicee as shown in the diagram in the document
+for the second and fourth nodes. These represent the first and second occurrences of "gat", respectively. Hence timing only depends on S and not b.

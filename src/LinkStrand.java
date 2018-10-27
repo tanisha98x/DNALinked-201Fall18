@@ -1,3 +1,6 @@
+/**
+ * @author Tanisha Nalavadi, tn85
+ */
 import java.lang.IndexOutOfBoundsException;
 public class LinkStrand implements IDnaStrand{
 	private LinkStrand myInfo;
@@ -17,22 +20,41 @@ public class LinkStrand implements IDnaStrand{
 	private int myLocalIndex;
 	private Node myCurrent;
 
-
+	/**
+	 * Constructor that calls initialize on the given String
+	 * @param A given String 
+	 */
 	public LinkStrand(String s) {
 		initialize(s);
 	}
 
+
+
+	/**
+	 * Default constructor that  calls the above constructor with a parameter empty String
+	 */
 	public LinkStrand() {
 		this("");
 	}
 
 
 
+	/**
+	 * Creates and returns the LinkStrand Object
+	 * @param A given String 
+	 * @return A new Link Strand Object
+	 */
 	@Override
 	public long size() {
 		return mySize;
 	}
 
+
+
+	/**
+	 * Initializes the LinkStrand object with a String
+	 * @param A given String
+	 */
 	@Override
 	public void initialize(String source) {
 		myFirst= new Node(source);
@@ -44,11 +66,25 @@ public class LinkStrand implements IDnaStrand{
 		myCurrent=myFirst;
 	}
 
+
+
+	/**
+	 * Creates and returns the LinkStrand Object
+	 * @param A given String 
+	 * @return A new Link Strand Object
+	 */
 	@Override
 	public IDnaStrand getInstance(String source) {
 		return new LinkStrand(source);
 	}
 
+
+
+	/**
+	 * Creates one new node  and adds it to the end of the Link Strand Object and updates instance variables to maintain class invariants as described in the document 
+	 * @param A given String 
+	 * @return A Link Strand Object
+	 */
 	@Override
 	public IDnaStrand append(String dna) {
 		myAppends=myAppends+1;
@@ -64,6 +100,12 @@ public class LinkStrand implements IDnaStrand{
 		return this;
 	}
 
+
+
+	/**
+	 * Return a new LinkStrand object that's the reverse of the object on which it's called. Even reverses the information in each node using a String builder and reverse method 
+	 * @return A new Link Strand Object
+	 */
 	@Override
 	public IDnaStrand reverse() {
 		if (myFirst.next==null) {
@@ -97,17 +139,24 @@ public class LinkStrand implements IDnaStrand{
 		copy.myLast=copy.myFirst;
 		copy.myFirst=prev;
 		return copy;
-
-
 	} 
 
-
+	/**
+	 * Return the number of times append is called 
+	 * @return An int
+	 */
 	@Override
 	public int getAppendCount() {
-		// TODO Auto-generated method stub
 		return myAppends;
 	}
 
+
+
+	/**
+	 * Returns a char at a specified index
+	 * @param An int
+	 * @return A char
+	 */
 	@Override
 	public char charAt(int index) {
 		if (index < 0 || index >= mySize) {
@@ -130,7 +179,10 @@ public class LinkStrand implements IDnaStrand{
 	}
 
 
-
+	/**
+	 *Returns the String representation of the LinkStrand by looping over nodes and appending their values to a StringBuilder object. 
+	 * @return A String
+	 */
 	@Override
 	public String toString(){
 		StringBuilder ans = new StringBuilder();
